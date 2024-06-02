@@ -54,6 +54,17 @@ $(function () {
       true);
   });
 
+  document.getElementById('specials-tile').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent the default action of clicking on a link
+  
+    console.log("Specials button clicked!"); // Check if event listener is triggered
+  
+    // Generate a random category short name and load menu items
+    var categories = ['category1', 'category2', 'category3']; // Example categories
+    var randomCategoryShortName = categories[Math.floor(Math.random() * categories.length)];
+    $dc.loadMenuItems(randomCategoryShortName);
+  });  
+
   function buildAndShowHomeHTML(categories) {
     $ajaxUtils.sendGetRequest(
       homeHtmlUrl,
