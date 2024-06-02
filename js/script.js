@@ -1,3 +1,19 @@
+// Add an event listener to the "Specials" tile anchor tag
+document.addEventListener("DOMContentLoaded", function(event) {
+  document.getElementById('specials-tile').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent the default action of clicking on a link
+    
+    console.log("Specials button clicked!"); // Check if event listener is triggered
+    
+    // Array of category short names
+    var categories = ['category1', 'category2', 'category3']; // Example categories
+    var randomCategoryShortName = categories[Math.floor(Math.random() * categories.length)];
+    
+    // Load menu items for the randomly selected category
+    $dc.loadMenuItems(randomCategoryShortName);
+  });
+});
+
 $(function () {
   $("#navbarToggle").blur(function (event) {
     var screenWidth = window.innerWidth;
@@ -52,20 +68,6 @@ $(function () {
       allCategoriesUrl,
       buildAndShowHomeHTML,
       true);
-  });
-
-  // Add an event listener to the "Specials" tile anchor tag
-  document.getElementById('specials-tile').addEventListener('click', function(event) {
-    event.preventDefault(); // Prevent the default action of clicking on a link
-    
-    // Array of category short names
-    var categoryShortNames = ['L', 'D', 'S', 'A']; // Replace with your category short names
-    
-    // Generate a random index to select a category short name
-    var randomIndex = Math.floor(Math.random() * categoryShortNames.length);
-    
-    // Load menu items for the randomly selected category
-    $dc.loadMenuItems(categoryShortNames[randomIndex]);
   });
 
   function buildAndShowHomeHTML(categories) {
